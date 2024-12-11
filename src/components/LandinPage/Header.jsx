@@ -10,10 +10,10 @@ const Header = () => {
         </div>
 
         <ul className="flex gap-8 px-8">
-          <li className="font-medium text-[1.2rem] hover:underline transition-all duration-300 cursor-pointer">Home</li>
-          <li className="font-medium text-[1.2rem] hover:underline transition-all duration-300 cursor-pointer">AboutUs</li>
-          <li className="font-medium text-[1.2rem] hover:underline transition-all duration-300 cursor-pointer">Products</li>
-          <li className="font-medium text-[1.2rem] hover:underline transition-all duration-300 cursor-pointer">Contact</li>
+          <li className="font-medium text-[1.2rem] hover:underline transition-all duration-150 cursor-pointer hover:text-[#75B16C]">Home</li>
+          <li className="font-medium text-[1.2rem] hover:underline transition-all duration-150 cursor-pointer hover:text-[#75B16C]">AboutUs</li>
+          <li className="font-medium text-[1.2rem] hover:underline transition-all duration-150 cursor-pointer hover:text-[#75B16C]">Products</li>
+          <li className="font-medium text-[1.2rem] hover:underline transition-all duration-150 cursor-pointer hover:text-[#75B16C]">Contact</li>
         </ul>
       </div>
     </div>

@@ -5,6 +5,7 @@ import HeroSection from "./LandinPage/HeroSection";
 import AboutUs from "./LandinPage/AboutUs";
 import Footer from "./LandinPage/Footer";
 import ProductsView from "./LandinPage/ProductsView";
+import Contact from "./LandinPage/Contact";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <HeroSection />
       <AboutUs />
       <ProductsView />
+      <Contact/>
       <Footer />
     </div>
   );

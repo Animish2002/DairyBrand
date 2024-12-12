@@ -10,94 +10,86 @@ import {
 const milkProducts = [
   {
     id: 1,
-    name: "Standardized Milk",
-    description: "Creamy, farm-fresh whole milk from grass-fed cows",
-
-    imageUrl: "/api/placeholder/400/300?text=Whole+Milk",
-    category: "Fresh Milk",
+    name: "Pure Cow Ghee",
+    description: "Premium-quality pure cow ghee for authentic Indian flavors.",
+    imageUrl: "/api/placeholder/400/300?text=Low+Fat+Milk",
+    category: "Ghee",
   },
   {
     id: 2,
     name: "Cow Milk",
-    description: "Fresh, protein-rich cottage cheese",
-
+    description: "Fresh and pure cow milk, packed with essential nutrients.",
     imageUrl: "/api/placeholder/400/300?text=Cottage+Cheese",
-    category: "Cheese",
+    category: "Fresh Milk",
   },
   {
     id: 3,
     name: "Full Cream Milk",
-    description: "Pure, natural goat milk with unique flavor profile",
-
+    description:
+      "Luxuriously thick full cream milk, perfect for indulgent recipes.",
     imageUrl: "/api/placeholder/400/300?text=Goat+Milk",
-    category: "Specialty Milk",
+    category: "Fresh Milk",
   },
   {
     id: 4,
     name: "Panner",
     description:
-      "Nutritious low-fat milk, perfect for health-conscious consumers",
-
+      "Soft and fresh paneer, perfect for a variety of Indian dishes.",
     imageUrl: "/api/placeholder/400/300?text=Low+Fat+Milk",
     category: "Fresh Milk",
   },
   {
     id: 5,
     name: "Basundi",
-    description: "Smooth, dairy-free almond milk alternative",
-
+    description: "Traditional and creamy basundi, a delightful Indian dessert.",
     imageUrl: "/api/placeholder/400/300?text=Almond+Milk",
-    category: "Plant-Based",
+    category: "Milk Dessert",
   },
   {
     id: 6,
     name: "Shrikhand",
-    description: "Artisan sharp cheddar, aged to perfection",
-
+    description:
+      "Deliciously smooth shrikhand, infused with rich Indian flavors.",
     imageUrl: "/api/placeholder/400/300?text=Cheddar+Cheese",
-    category: "Cheese",
+    category: "Milk Dessert",
   },
-
   {
     id: 7,
     name: "Amrakhand",
-    description: "Thick, creamy Greek yogurt, high in protein",
-
+    description: "Mango-flavored creamy amrakhand, a treat for mango lovers.",
     imageUrl: "/api/placeholder/400/300?text=Greek+Yogurt",
-    category: "Yogurt",
+    category: "Milk Dessert",
   },
   {
     id: 8,
     name: "Dahi",
-    description: "Smooth, creamy oat milk with a subtle sweetness",
-
+    description:
+      "Thick and creamy dahi, perfect for everyday meals and recipes.",
     imageUrl: "/api/placeholder/400/300?text=Oat+Milk",
-    category: "Plant-Based",
+    category: "Yogurt",
   },
   {
     id: 9,
     name: "Lassi",
-    description: "Fresh, protein-rich cottage cheese",
-
+    description: "Refreshing and flavorful lassi, a traditional Indian drink.",
     imageUrl: "/api/placeholder/400/300?text=Cottage+Cheese",
-    category: "Cheese",
+    category: "Yogurt",
   },
   {
     id: 10,
-    name: "Pure Cow Ghee",
+    name: "Standardized Milk",
     description:
-      "Nutritious low-fat milk, perfect for health-conscious consumers",
-
-    imageUrl: "/api/placeholder/400/300?text=Low+Fat+Milk",
+      "Rich and creamy standardized milk, ideal for your daily needs.",
+    imageUrl: "/api/placeholder/400/300?text=Whole+Milk",
     category: "Fresh Milk",
   },
   {
     id: 11,
     name: "Pure Buffalo Ghee",
-    description: "Smooth, dairy-free almond milk alternative",
-
+    description:
+      "Rich and aromatic pure buffalo ghee, perfect for Indian cooking.",
     imageUrl: "/api/placeholder/400/300?text=Almond+Milk",
-    category: "Plant-Based",
+    category: "Ghee",
   },
 ];
 
@@ -137,7 +129,10 @@ const HorizontalProductScroll = () => {
   };
 
   return (
-    <section id="products" className="flex justify-center items-center h-screen bg-[#fcfbf4]">
+    <section
+      id="products"
+      className="flex justify-center items-center h-screen bg-[#fcfbf4]"
+    >
       <div className="relative w-full py-8">
         {/* Category Selector */}
         <div className="container mx-auto px-4 mb-6 overflow-x-auto example">

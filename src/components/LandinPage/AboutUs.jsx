@@ -6,7 +6,7 @@ import singlecow from "../../assets/singlecow.png";
 
 const AboutUs = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white" id="about">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}

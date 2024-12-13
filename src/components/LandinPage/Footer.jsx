@@ -58,7 +58,7 @@ const Footer = () => {
           <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
           <ul className="space-y-2">
             {[
-              { label: "Home", href: "#home" },
+              { label: "Home", href: "#" },
               { label: "Products", href: "#products" },
               { label: "About Us", href: "#about" },
               { label: "Contact", href: "#contact" },

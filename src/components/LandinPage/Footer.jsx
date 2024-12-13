@@ -99,7 +99,7 @@ const Footer = () => {
       {/* Copyright */}
       <div className="border-t border-gray-200 mt-8 pt-6 text-center">
         <p className="text-sm text-gray-600">
-          © {currentYear} Fresh Dairy. All Rights Reserved.
+          © {currentYear} Nirmiti Doodh. All Rights Reserved.
         </p>
       </div>
     </footer>

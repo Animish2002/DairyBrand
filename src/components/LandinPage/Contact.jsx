@@ -19,7 +19,7 @@ const Contact = () => {
     {
       icon: <Mail className="text-red-600" />,
       title: "Email",
-      text: "support@valleydairy.com",
+      text: "nirmitisocial8@gmail.com",
     },
     {
       icon: <Clock className="text-purple-600" />,

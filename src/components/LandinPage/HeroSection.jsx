@@ -61,7 +61,7 @@ const HeroSection = () => {
         <motion.img
           src={cowimage}
           alt="cow"
-          className="absolute top-8 w-56 left-[-33px] md:left-[-35px] z-10"
+          className="absolute md:top-8 top-0.5 w-56 left-[-33px] md:left-[-35px] z-10"
           variants={cowImageVariants}
           initial="hidden"
           animate="visible"
@@ -95,14 +95,14 @@ const HeroSection = () => {
           <motion.button
             variants={buttonVariants}
             whileHover="hover"
-            className="mt-6 px-8 py-4 bg-[#E3D270] text-black rounded-lg 
+            className="mt-6 md:px-8 md:py-4 px-3 py-2 bg-[#E3D270] text-black rounded-lg 
                          shadow-xl text-xl font-semibold 
                          transition-all duration-300 
                          flex items-center gap-2 
                          hover:bg-[#FFE589] 
                          focus:outline-none focus:ring-2 focus:ring-yellow-400"
           >
-            Explore more <ChevronRight className="w-6 h-6" />
+            Contact us now <ChevronRight className="w-6 h-6" />
           </motion.button>
         </motion.div>
       </motion.div>

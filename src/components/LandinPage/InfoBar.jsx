@@ -1,5 +1,7 @@
 import React from "react";
-import { Facebook, Mail, Phone, MessageCircle } from "lucide-react";
+import { Facebook, Mail, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+
 
 const InfoBar = () => {
   return (
@@ -14,8 +16,8 @@ const InfoBar = () => {
       <div className="bg-[#E3D270] px-4 py-3 flex flex-col md:flex-row w-full md:w-12/12 items-center justify-between">
         {/* Contact Info */}
         <div className="flex flex-col md:flex-row items-center text-center md:text-left">
-          <span className="md:px-4">Email: info.dairy@gmail.com</span>
-          <span className="md:px-4">Phone: +122 555 444 22</span>
+          <span className="md:px-4">Email: nirmitisocial8@gmail.com</span>
+          <span className="md:px-4">Phone: +91 555 444 22</span>
         </div>
 
         {/* Social Icons */}
@@ -37,11 +39,11 @@ const InfoBar = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80"
             >
-              <MessageCircle className="w-5 h-5 hover:text-blue-500 hover:font-medium transition-all duration-200" />
+              <FaWhatsapp className="w-5 h-5 hover:text-blue-500 hover:font-medium transition-all duration-200" />
             </a>
           </li>
           <li>
-            <a href="mailto:info.dairy@gmail.com" className="hover:opacity-80">
+            <a href="mailto:nirmitisocial8@gmail.com" className="hover:opacity-80">
               <Mail className="w-5 h-5 hover:text-blue-500 hover:font-medium transition-all duration-200" />
             </a>
           </li>

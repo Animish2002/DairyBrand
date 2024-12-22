@@ -25,8 +25,8 @@ const Footer = () => {
             />
           </div>
           <p className="text-base text-gray-600 mb-4">
-            Providing you with farm-fresh dairy products <br/> that deliver quality,
-            freshness, and nutrition in every delightful drop.
+            Providing you with farm-fresh dairy products <br /> that deliver
+            quality, freshness, and nutrition in every delightful drop.
           </p>
           <div className="flex gap-4">
             <a
@@ -82,15 +82,18 @@ const Footer = () => {
           <ul className="space-y-3">
             <li className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-[#E3D270]" />
-              <span>123 Dairy Lane, Farm District</span>
+              <span>
+                Nirmiti Doodh, Kalewadi Phata, Pimpri-Chinchwad, Maharashtra
+                411017
+              </span>
             </li>
             <li className="flex items-center gap-2">
               <Phone className="w-5 h-5 text-[#E3D270]" />
-              <span>(555) 123-4567</span>
+              <span>(+91) 23-123-4567</span>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="w-5 h-5 text-[#E3D270]" />
-              <span>support@freshdairy.com</span>
+              <span>nirmitisocial8@gmail.com</span>
             </li>
           </ul>
         </div>

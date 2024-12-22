@@ -53,8 +53,8 @@ const Contact = () => {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information Section */}
-          <div className="bg-white rounded-2xl shadow-xl p-10">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-[#E3D270] pb-4">
+          <div className="bg-white rounded-2xl shadow-xl p-6">
+            <h2 className="md:text-4xl text-2xl font-bold text-gray-800 mb-6 border-b-4 border-[#E3D270] pb-4">
               Contact Nirmiti Doodh
             </h2>
 
@@ -88,8 +88,8 @@ const Contact = () => {
           </div>
 
           {/* Contact Form Section */}
-          <div className="bg-white rounded-2xl shadow-xl p-10">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-green-500 pb-4">
+          <div className="bg-white rounded-2xl shadow-xl p-6">
+            <h2 className="md:text-4xl text-2xl font-bold text-gray-800 mb-6 border-b-4 border-green-500 pb-4">
               Contact Us
             </h2>
 

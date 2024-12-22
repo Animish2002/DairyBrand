@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaHeart,
   FaShoppingCart,
@@ -104,32 +104,14 @@ const milkProducts = [
   },
 ];
 
+
 const HorizontalProductScroll = () => {
   const [currentCategory, setCurrentCategory] = useState("All");
   const containerRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [width, setWidth] = useState(0);
 
-  // Get unique categories
-  const categories = [
-    "All",
-    ...new Set(milkProducts.map((product) => product.category)),
-  ];
-
-  // Filter products
-  const filteredProducts =
-    currentCategory === "All"
-      ? milkProducts
-      : milkProducts.filter((product) => product.category === currentCategory);
-
-  const scrollLeft = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollBy({
-        left: -300,
-        behavior: "smooth",
-      });
-    }
-  };
-
+ 
   const scrollRight = () => {
     if (containerRef.current) {
       containerRef.current.scrollBy({
@@ -139,114 +121,168 @@ const HorizontalProductScroll = () => {
     }
   };
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (containerRef.current) {
+        setWidth(
+          containerRef.current.scrollWidth - containerRef.current.offsetWidth
+        );
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [currentCategory]);
+
+  const categories = [
+    "All",
+    ...new Set(milkProducts.map((product) => product.category)),
+  ];
+
+  const filteredProducts =
+    currentCategory === "All"
+      ? milkProducts
+      : milkProducts.filter((product) => product.category === currentCategory);
+
+  const scroll = (direction) => {
+    if (containerRef.current) {
+      const scrollAmount = direction === 'left' ? -280 : 280;
+      containerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <section
-      id="products"
-      className="flex justify-center items-center min-h-screen bg-[#fcfbf4] py-12 md:py-16 relative"
-    >
-      <h1 className="text-3xl md:text-5xl text-center mb-8 md:mb-12 absolute top-10 text-[#75B16C]">
-        View All Our <span>Products</span>
-      </h1>
-      <div className="w-full">
-        {/* Category Selector */}
-        <div className="container mx-auto px-4 mb-6 overflow-x-auto ">
-          <div className="flex space-x-2 md:space-x-4 pb-2 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setCurrentCategory(category)}
-                className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-                  currentCategory === category
-                    ? "bg-[#E3D270] text-black font-semibold"
-                    : "bg-white text-gray-700 hover:bg-blue-100 border"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+    <section className="min-h-screen bg-[#fcfbf4] py-8 px-4 md:py-16 relative">
+      {/* Header */}
+      <motion.h1 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-2xl md:text-5xl text-center mb-6 md:mb-12 text-[#75B16C] font-bold"
+      >
+        View Our Products
+      </motion.h1>
+
+      {/* Categories */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="mb-6 overflow-x-auto scrollbar-hide"
+      >
+        <div className="flex space-x-2 pb-2 justify-start md:justify-center min-w-min px-4">
+          {categories.map((category) => (
+            <motion.button
+              key={category}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setCurrentCategory(category)}
+              className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-all duration-300 ${
+                currentCategory === category
+                  ? "bg-[#E3D270] text-black font-semibold"
+                  : "bg-white text-gray-700 hover:bg-blue-50 border"
+              }`}
+            >
+              {category}
+            </motion.button>
+          ))}
         </div>
+      </motion.div>
 
-        {/* Horizontal Scroll Container */}
-        <div className="relative md:w-5/6 mx-auto w-full px-4 md:px-8 lg:px-12 y-">
-          {/* Scroll Left Button */}
-          <button
-            onClick={scrollLeft}
-            className="hidden md:block absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 md:p-3 hover:bg-gray-100 transition"
-          >
-            <FaChevronLeft className="text-gray-700 text-sm md:text-base" />
-          </button>
+      {/* Products Container */}
+      <div className="relative w-full md:w-5/6 mx-auto">
+        {!isMobile && (
+          <>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => scroll('left')}
+              className="hidden md:block absolute left-[-40px] top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100"
+            >
+              <FaChevronLeft className="text-gray-700" />
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => scroll('right')}
+              className="hidden md:block absolute right-[-50px] top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100"
+            >
+              <FaChevronRight className="text-gray-700" />
+            </motion.button>
+          </>
+        )}
 
-          {/* Scroll Right Button */}
-          <button
-            onClick={scrollRight}
-            className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 md:p-3 hover:bg-gray-100 transition"
-          >
-            <FaChevronRight className="text-gray-700 text-sm md:text-base" />
-          </button>
-
-          {/* Product Scroll Area */}
+        <motion.div
+          ref={containerRef}
+          className="overflow-hidden"
+        >
           <motion.div
-            ref={containerRef}
             drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.3}
-            onDragStart={() => setIsDragging(true)}
-            onDragEnd={() => setIsDragging(false)}
-            className="flex overflow-x-scroll no-scrollbar space-x-4 md:space-x-6 scroll-smooth example py-16"
-            style={{ cursor: isDragging ? "grabbing" : "grab" }}
+            dragConstraints={{ right: 0, left: -width }}
+            className="flex gap-4 md:gap-6 px-2 py-10"
           >
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                isDragging={isDragging}
-              />
-            ))}
+            <AnimatePresence>
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} isMobile={isMobile} />
+              ))}
+            </AnimatePresence>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-const ProductCard = ({ product, isDragging }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
+const ProductCard = ({ product, isMobile }) => {
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      whileHover={{ y: -5 }}
       whileTap={{ scale: 0.95 }}
-      className="flex-shrink-0 w-48 md:w-64 bg-white shadow-lg rounded-xl overflow-hidden relative transform transition-transform duration-300"
-      onHoverStart={() => !isDragging && setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      className={`flex-shrink-0 ${
+        isMobile ? 'w-[280px]' : 'w-[300px]'
+      } bg-white shadow-lg rounded-xl overflow-hidden`}
     >
-      {/* Product Image */}
-      <div className="relative overflow-hidden">
+      <motion.div 
+        className="relative overflow-hidden"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.3 }}
+      >
         <img
           src={product.imageUrl}
           alt={product.name}
-          className="w-full h-36 md:h-48 object-cover"
+          className="w-full h-48 object-cover"
         />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+        >
+          
+        </motion.div>
+      </motion.div>
 
-        {isHovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center space-x-4"
-          ></motion.div>
-        )}
-      </div>
-
-      {/* Product Details */}
-      <div className="p-3 md:p-4">
-        <h3 className="text-base md:text-xl font-semibold mb-1 md:mb-2 text-gray-800 truncate">
+      <motion.div 
+        className="p-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <h3 className="text-lg font-semibold mb-2 text-gray-800">
           {product.name}
         </h3>
-        <p className="text-xs md:text-sm text-gray-600 mb-2 md:mb-4 h-10 md:h-12 overflow-hidden">
+        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
           {product.description}
         </p>
-      </div>
+        <div className="flex justify-between items-center">
+          
+         
+        </div>
+      </motion.div>
     </motion.div>
   );
 };
